@@ -1,4 +1,4 @@
-# homework9
+# video segment
 
    
 <img src="https://img.shields.io/badge/license-Apache-green" alt="badge-Apache" />
@@ -15,7 +15,7 @@ i created a read me generator
 * [Questions](#questions)
     
 ## Installation 
-install inquierer
+needs inquierer
 
 ## Usage 
 run program and follow prompts
@@ -24,10 +24,10 @@ run program and follow prompts
 This project is licensed under Apache
 
 ## Contribution 
-just dont 
+just dont
 
 ## Tests
-run and follow propmpts
+run and follow prompts
 
 ## Questions
 For additional questions please email me at bashworthj@gmail.com. To view more projects created by me, you can visit https://github.com/bashworthj.
