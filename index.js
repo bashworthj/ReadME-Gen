@@ -35,6 +35,19 @@ const init = async () => {
             name: 'testing',
         },
         {
+            type: 'rawlist',
+            message: 'what license was this created with',
+            choices:[
+                "MPL",
+                "GPL",
+                "Apache",
+                "MIT",
+                "CC",
+                "BSD",
+            ],
+            name: 'license',
+        },
+        {
             type: 'input',
             message: 'What is your GitHub username?',
             name: 'github',
@@ -47,10 +60,10 @@ const init = async () => {
 
     ])
 
-    const filename = 'myread.md';
+    const filename = `${data.project}.md`;
 
-    fs.writeFile(filename, JSON.stringify(data, null, 2), (err) =>
-        err ? console.log(err) : console.log('Success!')
+    fs.writeFile(filename, readMeGen(data), (err) =>
+        err ? console.log(err) : console.log('ReadMe Has Been Created!')
     );
 
 
@@ -58,7 +71,55 @@ const init = async () => {
 
 init();
 
+const colorLicense = (type) => {
+    let color;
+    if (type === "MPL") color = "red";
+    if (type === "GPL") color = "gray";
+    if (type === "Apache") color = "green";
+    if (type === "MIT") color = "blue";
+    if (type === "CC") color = "orange";
+    if (type === "BSD") color = "goldenrod";
+  
+    return (
+      `<img src="https://img.shields.io/badge/license-${type}-${color}" alt="badge-${type}" />`
+    );
+  };
 
 
+const readMeGen = data => {
+    return `# ${data.project}
 
+   
+${colorLicense(data.license)}
 
+## Description 
+${data.description}
+
+## Table of Contents
+* [Installation](#installation)
+* [Usage](#usage)
+* [License](#license)
+* [Contribution](#contribution)
+* [Tests](#tests)
+* [Questions](#questions)
+    
+## Installation 
+${data.installation}
+
+## Usage 
+${data.usage}
+
+## License 
+This project is licensed under ${data.license}
+
+## Contribution 
+${data.contribution}
+
+## Tests
+${data.testing}
+
+## Questions
+For additional questions please email me at ${data.email}. To view more projects created by me, you can visit https://github.com/${data.github}.
+  
+    `;
+  }
